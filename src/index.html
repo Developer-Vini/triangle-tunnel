@@ -12,7 +12,6 @@
     r=(q,z)=>J(C(q*.785)*s, S(q*.785)*s,z)
     E=[];for(i=8;i--;)for(j=i;j--;)(i^j)-1||E.push([i,j])
 
-
     N=(f,d,v,y='square',t=A.currentTime,e=f,o=A.createOscillator(),g=A.createGain()) =>{
         o.type=y;o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(e,t+d)
         g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(1e-4,t+d)
@@ -39,8 +38,8 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
     L=t=>{
         requestAnimationFrame(L)
         d=I((t-lt)/16.7,3)||1;lt=t
-        x.globalCompositeOperation='source-over';
-        x.fillsStyle='#0004';
+        x.globalCompositeOperation='source-over'
+        x.fillsStyle='#0004'
         x.fillRect(0,0,W,H)
         x.globalCompositeOperation='lighter'
         sp=G==1?.25+sc*.003:.1
@@ -48,14 +47,31 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
         if(G==1){
             tx=Z(tx+((K[39]|K[68])-(K[37]|K[65]))*.2);
             ty=Z(ty+((K[40]|K[83])-(K[38]|K[87]))*.2);
-            px+=(tx-px)*.2;
-            py+=(ty-py)*.2;
+            px+=(tx-px)*.2
+            py+=(ty-py)*.2
             O=O.filter(o=>{
                 o[2]-=sp*d
                 o[2]<5&o[2]>3&B(o[0]-px)<1.5&B(o[1]-py)<1.5&&die()
                 return o[2]>2||(sc++,N(440*2**([0,2,4,7,9][sc%5]/12),.15,.08,'triangle'),0)
             })
         }
+        D+=sp*d
+        sh*=.9
+        
+        cx=px/2+(Q()-.5)*sh
+        cy=py/2+(Q()-.5)*sh
+
+        x.lineWidth=2+P*2
+        for(k=16;k--;){
+            z=k*5+5.5-D%5
+            s=4+P*.4
+            x.strokeStyle=`hsla(${((D/5|0)+k)*15+sc*3},90%,${40+P*25}%,${1-z/85})`
+            x.beginPath()
+            for(q=9;q--;) x.lineTo(...r(q,z))
+            for(q=8;q--;)x.moveTo(...r(q,z)), x.lineTo(...r(q,z+5))
+            x.stoke()
+        }
+
     }
 
 </script>
