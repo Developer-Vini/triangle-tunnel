@@ -1,6 +1,6 @@
 # Triangle Running
 
-A simple 3D game developed with **JavaScript** in less than **3 KB**.
+A simple 3D game developed with **JavaScript** in less than **3 KB**. Where the objective of the game is to avoid obstacles that become increasingly difficult.
 
 ## Play
 
@@ -8,7 +8,9 @@ You don't need to install anything to play.
 
 [Click here to get the game](https://github.com/Developer-Vini/triangle-tunnel/blob/main/dist/uri.txt)
 
-Copy the link from the file and paste it into your browser's address bar.
+click this link, copy the contents of the uri.txt file and paste it into your browser.
+
+The gameplay is simple: use the mouse to move the triangle and dodge the cubes.
 
 ## Screenshots
 
