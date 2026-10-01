@@ -92,7 +92,12 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
             x.stroke()
         }
 
-
+        x.fillStyle="white"
+        x.textAlign='center'
+        x.font='20px Arial'
+        G==1?x.fillText(sc,W/2,40):(x.font="40px Arial", x.fillText(G?'Game over  ' +sc:'Tunnel Triangle', W/2,H/2), x.font='19px Arial',x.fillText((G?'Recorde ' +best+' . ': '')+'Click to play', W/2,H/2+40))
     }
+
+    L(0)
 
 </script>
