@@ -71,6 +71,15 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
             for(q=8;q--;)x.moveTo(...r(q,z)), x.lineTo(...r(q,z+5))
             x.stoke()
         }
+        O.map(o=>{
+            if(o[2]<1.5)return
+            V=[...Array(8)].map((_,k)=>J(o[2]+(k&1)*2-1,o[1]+(k>>1&1)*2-1,o[2]+(k>>2)*2-1))
+            x.strokeStyle=`hsla(${o[2]*4+D*5+180},100%,${55+P*20}%,${I(1,2-o[2]/35)})`
+            x.beginPath()
+            E.map(([i,j])=>(x.moveTo(...V[i]),x.lineTo(...V[j])))
+            x.stroke()
+        })
+        
 
     }
 
