@@ -1,5 +1,4 @@
-<!DOCTYPE html><meta name=viewport content="width=device-width"><title>Document</title>
-<style>body { margin: 0; background-color: black; overflow: hidden; touch-action: none; }</style>
+<style>body { margin: 0; background: #000; overflow: hidden; touch-action: none; }</style>
 <canvas id=c></canvas>
 <script>
     x = c.getContext('2d'); W=c.width=innerWidth;H=c.height=innerHeight
@@ -81,7 +80,7 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
         })
 
         if(G<2){
-            x.fillStyle=x.strokeStyle='white'
+            x.fillStyle=x.strokeStyle='#fff'
             w=(tx-px)*.3
             x.beginPath()
             x.lineTo(...J(px,py-.3,5))
@@ -92,10 +91,10 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
             x.stroke()
         }
 
-        x.fillStyle="white"
+        x.fillStyle="#fff"
         x.textAlign='center'
         x.font='20px Arial'
-        G==1?x.fillText(sc,W/2,40):(x.font="40px Arial", x.fillText(G?'Game over  ' +sc:'Tunnel Triangle', W/2,H/2), x.font='19px Arial',x.fillText((G?'Recorde ' +best+' . ': '')+'Click to play', W/2,H/2+40))
+        G==1?x.fillText(sc,W/2,40):(x.font="40px Arial", x.fillText(G?'Game over' +sc:'Tunnel Triangle', W/2,H/2),x.font='19px Arial',x.fillText((G?'Record'+best+'.':'')+'Click to play',W/2,H/2+40))
     }
 
     L(0)
