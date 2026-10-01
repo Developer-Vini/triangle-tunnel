@@ -10,7 +10,7 @@
     Z=v=>M(-3,I(3,v))
     J=(a,b,z)=>[W/2+(a-cx)*H/2/z,H/2+(b-cy)*H/2/z]
     r=(q,z)=>J(C(q*.785)*s, S(q*.785)*s,z)
-    E=[];for(i=8;i--;)for(j=i;j--;)(i^j)-1||E.push([i,j])
+    E=[];for(i=8;i--;)for(j=i;j--;)(i^j)&(i^j)-1||E.push([i,j])
 
     N=(f,d,v,y='square',t=A.currentTime,e=f,o=A.createOscillator(),g=A.createGain()) =>{
         o.type=y;o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(e,t+d)
