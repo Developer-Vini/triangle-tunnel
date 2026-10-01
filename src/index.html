@@ -1,10 +1,10 @@
 <!DOCTYPE html><meta name=viewport content="width=device-width"><title>Document</title>
 <style>body { margin: 0; background-color: black; overflow: hidden; touch-action: none; }</style>
-<canvas> id=canvas</canvas>
+<canvas id=c></canvas>
 <script>
     ctx = c.getContext('2d'); W=c.width=innerWidth;H=c.height=innerHeight
     C=Math.cos;S=Math.sin;M=Math.max;I=Math.min;B=Math.abs;Q=Math.random
-    G=sc=best=D=sh=lt=px=py=tx=ty=cx=cy=n=0
+    G=sc=best=D=sh=lt=px=py=tx=ty=cx=cy=n=nt=0
     A=0;K={};O=[]
     
     Z=v=>M(-3,I(3,v))
@@ -27,5 +27,35 @@
         N(440*2**((b+[0,3,7,10,12,10,7,3][n&7])/12),.1,.05,'triangle',t)
         if(n%4==0)for(j=1+I(sc/15|0,3);j--;)O.push([j?(Q()-.5)*6.5:px,j?(Q()-.5)*6.5:py,70])
     }
-setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)y(n++,nt)},25)
+setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
+
+    go=_=>{G-1&&(A=A||new AudioContext,G=1,sc=n=pc=py=0,O=[], T0=nt=A.currentTime+.1)}
+    die=_=>{G=2;sh=2;best=M(best,sc);N(110,1,.5, 'sawtooth',A.currentTime,20)}
+    onpointerdown=go
+    onpointermove=e=>{tx=Z((e.x/W-.5)*8);ty=Z((e.y/H-.5)*8)}
+    onkeydown=e=>{K[e.keyCode]=1;e.keyCode==32&&go()}
+    onkeyup=e=>K[e.keyCode]=0
+
+    L=t=>{
+        requestAnimationFrame(L)
+        d=I((t-lt)/16.7,3)||1;let=t
+        x.globalCompositeOperation='source-over';
+        x.fillsStyle='#0004';
+        x.fillRect(0,0,W,H)
+        x.globalCompositeOperation='lighter'
+        sp=G==1?.25+sc*.003:.1
+        P=G==1?1-((A.currentTime-T0)*7/3%1):.3
+        if(G==1){
+            tx=Z(tx+((K[39]|K[68])-(K[37]|K[65]))*.2);
+            ty=Z(ty+((K[40]|K[83])-(K[38]|K[87]))*.2);
+            px+=(tx-px)*.2;
+            py+=(ty-py)*.2;
+            O=O.filter(o=>{
+                o[2]-=sp*d
+                o[2]<5&o[2]>3&B(o[0]-px)<1.5&B(o[1]-py)<1.5&&die()
+                return o[2]>2||(sc++,N(440*2**([0,2,4,7,9][sc%5]/12),.15,.08,'triangle'),0)
+            })
+        }
+    }
+
 </script>
