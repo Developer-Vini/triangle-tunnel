@@ -28,7 +28,7 @@
     }
 setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
 
-    go=_=>{G-1&&(A=A||new AudioContext,G=1,sc=n=pc=py=0,O=[], T0=nt=A.currentTime+.1)}
+    go=_=>{G-1&&(A=A||new AudioContext,G=1,sc=n=px=py=0,O=[], T0=nt=A.currentTime+.1)}
     die=_=>{G=2;sh=2;best=M(best,sc);N(110,1,.5, 'sawtooth',A.currentTime,20)}
     onpointerdown=go
     onpointermove=e=>{tx=Z((e.x/W-.5)*8);ty=Z((e.y/H-.5)*8)}
@@ -39,7 +39,7 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
         requestAnimationFrame(L)
         d=I((t-lt)/16.7,3)||1;lt=t
         x.globalCompositeOperation='source-over'
-        x.fillsStyle='#0004'
+        x.fillStyle='#0004'
         x.fillRect(0,0,W,H)
         x.globalCompositeOperation='lighter'
         sp=G==1?.25+sc*.003:.1
