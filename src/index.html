@@ -3,4 +3,12 @@
 <canvas> id=canvas</canvas>
 <script>
     ctx = c.getContext('2d'); W=c.width=innerWidth;H=c.height=innerHeight
+    C=Math.cos;S=Math.sin;M=Math.max;I=Math.min;B=Math.abs;Q=Math.random
+    G=sc=best=D=sh=lt=px=py=tx=ty=cx=cy=n=0
+    A=0;K={};O=[]
+    Z=v=>M(-3,I(3,v))
+
+    J=(a,b,z)=>[W/2+(a-cx)*H/2/z,H/2+(b-cy)*H/2/z]
+    r=(q,z)=>J(C(q*.785)*s, S(q*.785)*s,z)
+    E=[];for(i=8;i--;)for(j=i;j--;)(i^j)-1||E.push([i,j])
 </script>
