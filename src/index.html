@@ -2,7 +2,7 @@
 <style>body { margin: 0; background-color: black; overflow: hidden; touch-action: none; }</style>
 <canvas id=c></canvas>
 <script>
-    ctx = c.getContext('2d'); W=c.width=innerWidth;H=c.height=innerHeight
+    x = c.getContext('2d'); W=c.width=innerWidth;H=c.height=innerHeight
     C=Math.cos;S=Math.sin;M=Math.max;I=Math.min;B=Math.abs;Q=Math.random
     G=sc=best=D=sh=lt=px=py=tx=ty=cx=cy=n=nt=0
     A=0;K={};O=[]
@@ -69,17 +69,29 @@ setInterval(_=>{for(;G==1&&nt<A.currentTime+.1;nt+=3/28)Y(n++,nt)},25)
             x.beginPath()
             for(q=9;q--;) x.lineTo(...r(q,z))
             for(q=8;q--;)x.moveTo(...r(q,z)), x.lineTo(...r(q,z+5))
-            x.stoke()
+            x.stroke()
         }
         O.map(o=>{
             if(o[2]<1.5)return
-            V=[...Array(8)].map((_,k)=>J(o[2]+(k&1)*2-1,o[1]+(k>>1&1)*2-1,o[2]+(k>>2)*2-1))
+            V=[...Array(8)].map((_,k)=>J(o[0]+(k&1)*2-1,o[1]+(k>>1&1)*2-1,o[2]+(k>>2)*2-1))
             x.strokeStyle=`hsla(${o[2]*4+D*5+180},100%,${55+P*20}%,${I(1,2-o[2]/35)})`
             x.beginPath()
             E.map(([i,j])=>(x.moveTo(...V[i]),x.lineTo(...V[j])))
             x.stroke()
         })
-        
+
+        if(G<2){
+            x.fillStyle=x.strokeStyle='white'
+            w=(tx-px)*.3
+            x.beginPath()
+            x.lineTo(...J(px,py-.3,5))
+            x.lineTo(...J(px-1,py+.5+w,4))
+            x.lineTo(...J(px+1,py+.5-w,4))
+            x.closePath()
+            x.fill()
+            x.stroke()
+        }
+
 
     }
 
